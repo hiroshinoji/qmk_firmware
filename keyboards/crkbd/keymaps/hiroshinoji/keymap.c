@@ -20,10 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 
 enum custom_keycodes {
-    MY_QUOT = SAFE_RANGE,
-    MY_TAB,
-    MY_LGUI,
-    MY_MO1,
+    MY_QUOT = SAFE_RANGE
 };
 
 #define MY_RALT MT(MOD_RALT, KC_LNG1)
@@ -32,9 +29,9 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       MY_MO1,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+        MO(1),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    MO(1),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, MY_QUOT,
+        MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,   MO(2),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -45,11 +42,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       MY_MO1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        MO(3), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX, XXXXXXX,
+        MO(3), XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,                      XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,   MO(3),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            KC_TAB, KC_LCTL, KC_LGUI,     KC_ESC,    KC_0,  KC_ENT
                                       //`--------------------------'  `--------------------------'
@@ -57,13 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        MO(3), XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, XXXXXXX,                      KC_LBRC, KC_RBRC, KC_CIRC, KC_PIPE, KC_PERC, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,   KC_AT, XXXXXXX,  KC_DLR, XXXXXXX, XXXXXXX,                      KC_LPRN, KC_RPRN, KC_ASTR, KC_MINS, KC_HASH,  KC_GRV,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LCBR, KC_RCBR, KC_PLUS, KC_AMPR, KC_EXLM, KC_BSLS,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TAB, KC_LCTL, KC_LGUI,    KC_EXLM, KC_UNDS,  KC_EQL
+        MO(3), XXXXXXX, XXXXXXX, KC_CIRC, KC_TILD, KC_PIPE,                      KC_AMPR,KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,    MO(3),
+  //|--------+--------+--------+--------+--------+--------|                    |--------+-------+--------+--------+--------+---------|
+      XXXXXXX,   KC_AT, KC_MINS,   KC_LT,   KC_GT, KC_PERC,                      KC_HASH,KC_LPRN, KC_RPRN, KC_DQUO, KC_COLN,   KC_GRV,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+-------+--------+--------+--------+---------|
+      KC_LSFT, XXXXXXX, KC_PLUS, XXXXXXX,  KC_DLR, KC_ASTR,                       KC_EXLM,KC_LCBR, KC_RCBR, KC_QUES, KC_BSLS,  KC_RSFT,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+-------+--------+--------+--------+---------|
+                                           KC_TAB, KC_LCTL, KC_LGUI,    XXXXXXX, KC_UNDS,  KC_EQL
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -78,6 +75,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           KC_LGUI, KC_LCTL, KC_LGUI,    KC_RALT,  KC_SPC,  KC_ENT
                                       //`--------------------------'  `--------------------------'
   )
+};
+
+// Key overrides
+// https://github.com/qmk/qmk_firmware/blob/master/docs/feature_key_overrides.md
+// Ctrl+h -> Bspc
+const key_override_t backspace_key_override = ko_make_basic(MOD_MASK_CTRL, KC_H, KC_BSPC);
+const key_override_t app_switch_left_override = ko_make_basic(MOD_MASK_GUI, KC_COMM, LGUI(KC_TAB));
+const key_override_t app_switch_right_override = ko_make_basic(MOD_MASK_GUI, KC_M, LGUI(KC_GRV));
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&backspace_key_override,
+    &app_switch_left_override,
+    &app_switch_right_override,
+	NULL
 };
 
 #ifdef OLED_ENABLE
@@ -178,70 +189,7 @@ bool oled_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  static int rereg_key = 0;  // which key is on? 0=none, 1=cmd, 2=alt.
-
-  /* // For toggle lang with MY_LGUI. */
-  /* static uint16_t mem_keycode; */
-  /* uint16_t prev_keycode = mem_keycode; */
-  /* bool is_tapped = ((!record->event.pressed) && (keycode == prev_keycode)); */
-  /* mem_keycode = keycode; */
-
-  // static uint16_t key_timer;
-
   switch (keycode) {
-    // Use MO(1) as TAB when switching apps.
-    // Move back applications (reverse of CMD+TAB) by CMD+'.
-    // Move back tabs by Alt+'.
-    case MY_QUOT:
-      if (record->event.pressed) {
-        if (keyboard_report->mods & MOD_BIT(KC_LGUI)) {
-          rereg_key = 1;
-          register_code (KC_GRV);
-        } else if (keyboard_report->mods & MOD_BIT(KC_RALT)) {
-          rereg_key = 2;
-          unregister_code (KC_RALT);
-          SEND_STRING(SS_LGUI("}"));
-          register_code (KC_RALT);
-        } else {
-          rereg_key = 0;
-          register_code (KC_QUOT);
-        }
-      } else {
-        if (rereg_key == 1) {
-          unregister_code (KC_GRV);
-          register_code (KC_LGUI);
-        } else if (rereg_key == 2) {
-          register_code (KC_RALT);
-        } else {
-          unregister_code (KC_QUOT);
-        }
-      }
-      break;
-    case MY_MO1:
-      if (record->event.pressed) {
-        if (keyboard_report->mods & MOD_BIT(KC_LGUI)) {
-          rereg_key = 1;
-          // Use MO(1) as TAB when Cmd is pressed.
-          register_code (KC_TAB);
-        } else if (keyboard_report->mods & MOD_BIT(KC_RALT)) {
-          rereg_key = 2;
-          unregister_code (KC_RALT);
-          SEND_STRING(SS_LGUI("{"));
-          register_code (KC_RALT);
-        } else {
-          rereg_key = 0;
-          layer_on(1);
-        }
-      } else {
-        if (rereg_key == 1) {
-          unregister_code (KC_TAB);
-          register_code (KC_LGUI);
-        } else if (rereg_key == 2) {
-          register_code (KC_RALT);
-        }
-        layer_off(1);
-      }
-      break;
     case MY_LGUI:
       // https://github.com/qmk/qmk_firmware/blob/master/docs/mod_tap.md#changing-hold-function
       // Cmd is toggle input when tapped and cmd when hold.

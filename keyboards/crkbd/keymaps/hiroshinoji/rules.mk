@@ -1,2 +1,4 @@
+BOOTLOADER = caterina
 MOUSEKEY_ENABLE = yes     # Mouse keys
 RGBLIGHT_ENABLE = no
+KEY_OVERRIDE_ENABLE = yes
